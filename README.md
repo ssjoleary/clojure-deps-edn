@@ -11,6 +11,8 @@
 
 [Practicalli Clojure CLI Config](https://github.com/practicalli/clojure-cli-config/) provides a user scope `deps.edn` file containing alias definitions for a wide range of community libraries and tools to that extend the features of Clojure CLI.
 
+`clojure -X:deps aliases` will list all the alias names at the project and user level.
+
 Aliases are qualified keywords using descriptive names to clearly convey purpose and provide a level of consistency to minimise cognitive load.
 
 Common arguments are included in alias definitions via `main-opts` and `:exec-args` to provide a default behaviour and simplify the use aliases.
@@ -21,7 +23,7 @@ Aliases are defined to be used with all execution options `-A`, `-M`, `-P`, `-T`
 
 * `-M` for `:main-opts` configuration
 * `-X` for `:exec-opts` configuration
-* `-T` for `:exec-opts`, ignoring project dependencies
+* `-T` for `:exec-opts`, ignoring project dependencies and only root of project as class path
 
 > [Clojure CLI - Which execution options to use](https://practical.li/clojure/clojure-cli/execution-options/)
 
@@ -36,6 +38,8 @@ The project also contains
 [Practicalli books](https://practical.li/#books) uses the Clojure CLI Config extensively to support a [REPL Reloaded workflow](https://practical.li/clojure/clojure-cli/repl-reloaded/) for Clojure projects.
 
 [Practicalli Clojure book discusses Clojure CLI and its use](https://practical.li/clojure/clojure-cli/repl/), along with video walk-through of the key features.
+
+[Practicalli Clojure CLI logo](https://github.com/practicalli/graphic-design/blob/live/logos/practicalli-clojure-cli-logo.png?raw=true)
 
 
 [![License CC By SA 4.0](https://img.shields.io/badge/license-CC%20BY--SA%204.0%20-blueviolet)](http://creativecommons.org/licenses/by-sa/4.0/?ref=chooser-v1)
@@ -82,7 +86,7 @@ The project also contains
 [Clojure CLI](https://clojure.org/guides/install_clojure) version **1.11.1.xxxx** or later is recommended. Check the version of Clojure CLI currently installed via:
 
 ```shell
-clojure -Sdescribe
+clojure --version
 ```
 
 > [Practicalli guide to installing Clojure](https://practical.li/clojure/install/clojure-cli/) has detailed instructions to install Clojure CLI for a specific operating system, or follow the [Clojure.org Getting Started page](https://clojure.org/guides/getting_started).
@@ -156,7 +160,7 @@ How to run common tasks for Clojure development.
 | Run the project  (clojure.main)                    | `clojure -M -m domain.main-namespace`                    | Built-in      |
 | Check library dependencies for newer versions      | `clojure -T:search/outdated`                             | Practicalli   |
 | Download dependencies                              | `clojure -P`  (followed by optional aliases)             | Built-in      |
-| Generate image of project dependency graph         | `clojure -T:project/graph-deps`                          | Practicalli   |
+| Generate image of project dependency graph         | `clojure -T:graph/deps`                                  | Practicalli   |
 | Deploy library locally (~/.m2/repository)          | `clojure -X:deps mvn-install :jar '"project.jar"'`       | Built-in      |
 | Find library names (Clojars & Maven Central)       | `clojure -M:search/libraries qualified-library-names`    | Practicalli   |
 | Find available versions of a library               | `clojure -X:deps find-versions :lib domain/library-name` | Built-in      |
